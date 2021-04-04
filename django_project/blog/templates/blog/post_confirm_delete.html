@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            <!-- this line is used for protection against Cross Site Request Forgeries -->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Are you sure to delete "{{ object.title }}"</legend>
+            </fieldset>
+            <div class="form-group">
+                <button class="alert alert-danger" type="submit"><strong>Yes, Delete</strong></button>
+                <a class="alert alert-info" href="{% url 'post-detail' object.id %}"><strong>Cancel</strong></a>
+            </div>   
+        </form>
+    </div>
+{% endblock content %}

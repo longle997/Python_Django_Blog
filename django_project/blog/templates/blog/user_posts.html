@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <!-- because we only send posts object into this template and posts object is not define here. So we have to refer to parameter of url for author information.
+    page_obj.paginator.count will count all post from your website -->
+    <h1 class="mb-4">
+        Posts was created by <strong>{{ view.kwargs.username }}</strong>
+        , ({{ page_obj.paginator.count }})
+    </h1>
+    {% for post in posts %}
+        <article class="media content-section">
+            <!-- article img is for resize the image -->
+            <img class="rounded-circle article-img" src="{{post.author.profile.image.url}}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+                <!-- in order to use name of path in urlpatterns, url <name of path> will need a parameter, for example post.id -->
+                    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                    <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+    {% if is_paginated %}
+        <!-- page_obj is what view pass in this template -->
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-outline-info mb-4"> << </a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info mb-4"> < </a>
+        {% endif %}
+
+        <!-- page_range is a list with 2 value ("num of first page", "num of last page") -->
+        {% for num in page_obj.paginator.page_range %}
+            <!-- take num of current page -->
+            {% if page_obj.number == num %}
+                <a href="?page={{ num }}" class="btn btn-info mb-4"> {{ num }} </a>
+            <!-- if num has value +-3 of current page number -->
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}" class="btn btn-outline-info mb-4"> {{ num }} </a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info mb-4"> > </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-info mb-4"> >> </a>
+        {% endif %}
+    {% endif %}
+{% endblock content %}
