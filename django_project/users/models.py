@@ -9,17 +9,18 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	# if we create a profile for an user without image, it will use default.jpg
 	# when we upload image to our page, that image will be saved in profile_pics folder
-	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+	image = models.ImageField(default='default.png', upload_to='profile_pics')
 
 	# this function will replace name of object when we interact with that object in database
 	# for example, when we interact with Profile object, it only show <QuerySet [<Profile:>,<Profile:>,<Profile:>....]
 	def __str__(self):
 		return f'{self.user.username} Profile'
 
+	'''
 	# override the save method of class Profile
-	def save(self):
+	def save(self, *args, **kwargs):
 		# execute the parent's class save method
-		super().save()
+		super(Profile, self).save(*args, **kwargs)
 
 		# take image's path
 		img = Image.open(self.image.path)
@@ -30,3 +31,4 @@ class Profile(models.Model):
 			img.thumbnail(output_size)
 			# overide the old image by new resize image according to image's path
 			img.save(self.image.path)
+	'''
