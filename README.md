@@ -12,11 +12,11 @@ run this command : <i>"source \<project environment\>/bin/activate"</i></br>
 
 - Step 4: Define environment variables</br>
 run this command : <i>"nano ~/.bash_profile"</i> to open file bash that contain environment variables</br>
-add necessary evironment variables
-export SECRET_KEY="47e2415487126kgnau995ef54290669a4241aa"
-export DEBUG_VALUE="True"
-export EMAIL_HOST_USER='youremail@gmail.com'
-export EMAIL_HOST_PASSWORD='your app password'
+add necessary evironment variables:</br>
+export SECRET_KEY="47e2415487126kgnau995ef54290669a4241aa"</br>
+export DEBUG_VALUE="True"</br>
+export EMAIL_HOST_USER='youremail@gmail.com'</br>
+export EMAIL_HOST_PASSWORD='your app password'</br>
 
 - Step 5: Apply environment variables to our virtual environment</br>
 run this command : <i>"source ~/.bash_profile"</i></br>
