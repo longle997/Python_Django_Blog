@@ -7,11 +7,27 @@ make sure that you use python with version > 3.6 in virtual environment by run t
 - Step 2: Install packages using pip from requirements.txt</br>
 run this command : <i>"pip install -r /path/to/requirements.txt"</i></br>
 
-- Step 3: Access virtual environment and run the web app</br>
-run following command : </br>
-<i>"source \<project environment\>/bin/activate"</i> to access virtual environment</br>
+- Step 3: Access virtual environment</br>
+run this command : <i>"source \<project environment\>/bin/activate"</i></br>
+
+- Step 4: Define environment variables</br>
+run this command : <i>"nano ~/.bash_profile"</i> to open file bash that contain environment variables</br>
+add necessary evironment variables
+export SECRET_KEY="47e2415487126kgnau995ef54290669a4241aa"
+export DEBUG_VALUE="True"
+export EMAIL_HOST_USER='youremail@gmail.com'
+export EMAIL_HOST_PASSWORD='your app password'
+
+- Step 5: Apply environment variables to our virtual environment</br>
+run this command : <i>"source ~/.bash_profile"</i></br>
+
+- Step 6: Migrate our database change</br>
+run those command :</br>
 <i>"cd django_project"</i></br>
-<i>"python manage.py runserver"</i> to run our web app</br>
+<i>"python manage.py migrate"</i></br>
+
+- Step 7: Run our web app</br>
+<i>"python manage.py runserver"</i></br>
 
 <h2>How to deploy this web app using Heroku service.</h2>
 
