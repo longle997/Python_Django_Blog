@@ -1,10 +1,10 @@
 <h2>How to run this web app in local machine.</h2>
 
 - Step 1: Install virtualenv and create new virtual environtment for new project</br>
-https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
+https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/</br>
+make sure that you use python with version > 3.6 in virtual environment by run this command <i>"virtualenv -p python3 \<project environment\>"</i></br>
 
 - Step 2: Install packages using pip from requirements.txt</br>
-make sure that you use python with version > 3.6</br>
 run this command : <i>"pip install -r /path/to/requirements.txt"</i></br>
 
 - Step 3: Access virtual environment and run the web app</br>
