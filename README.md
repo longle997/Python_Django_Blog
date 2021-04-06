@@ -18,6 +18,10 @@ export DEBUG_VALUE="True"</br>
 export EMAIL_HOST_USER='youremail@gmail.com'</br>
 export EMAIL_HOST_PASSWORD='your app password'</br>
 
+<b>Note:</b></br>
+Generate secret key by python secrets module.</br>
+Follow this link to register email app password: https://support.google.com/mail/answer/185833?hl=en-GB</br>
+
 - Step 5: Apply environment variables to our virtual environment</br>
 run this command : <i>"source ~/.bash_profile"</i></br>
 
